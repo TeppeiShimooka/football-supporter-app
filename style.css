@@ -18,6 +18,19 @@ body ,html{
     width:20vw;
     background-color: var(--bg-slider);
     border-right: 1px solid #334155;
+    position: fixed;
+}
+
+.slider-header{
+    width: 70%;
+    height: 10%;
+    display: flex;
+
+}
+
+#serch-team{
+    height: 30%;
+
 }
 
 .sidebar.hidden {
@@ -44,8 +57,8 @@ li{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 5vh;
-    width: 5vw;
+    height: 3vh;
+    width: 3vw;
     background:none;
     border: none;
     cursor:pointer;
@@ -58,5 +71,20 @@ li{
     background-color: var(--text-main);
     border-radius: 2px;
 
+}
+
+.serch-icon{
+    width: 40%;
+    height: 40%;
+    border-radius: 20%;
+}
+
+.slider-nav{
+   
+}
+
+.favorite-icon{
+    width: 10%;
+    height: 10%;
 }
 
