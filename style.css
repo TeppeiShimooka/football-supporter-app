@@ -19,26 +19,38 @@ body ,html{
     background-color: var(--bg-slider);
     border-right: 1px solid #334155;
     position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .slider-header{
     width: 70%;
     height: 10%;
     display: flex;
+    align-items: center;
+    
 
 }
+
 
 #serch-team{
     height: 30%;
 
 }
 
-.sidebar.hidden {
+.slider.hidden{
     margin-left: -20vw;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    text-align: left;   
 }
 
 li{
     list-style: none;
+    padding: 5%;
 }
 
 .nav-items{
@@ -46,11 +58,14 @@ li{
     background:none;
     border:none;
     color: #94a3b8;
+
+
 }
 
 .header-wrapper{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .menu-btn{
@@ -79,12 +94,16 @@ li{
     border-radius: 20%;
 }
 
-.slider-nav{
-   
-}
+
+
 
 .favorite-icon{
     width: 10%;
     height: 10%;
+}
+
+
+.app-header, main{
+    margin-left: 20vw;
 }
 
