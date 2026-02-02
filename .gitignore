@@ -1,0 +1,11 @@
+# Node.js
+node_modules/
+npm-debug.log*
+
+# APIキーなどの機密情報
+.env
+backend/.env
+
+# OSの不要ファイル
+.DS_Store
+Thumbs.db

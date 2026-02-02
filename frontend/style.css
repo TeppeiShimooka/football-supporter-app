@@ -1,0 +1,156 @@
+:root{
+    --bg-dark:#1e293b;
+    --bg-slider:#334155;
+    --h1-color:#34d339;
+    --text-main:#f1f5f9;
+    --accent-color:#fb7185;
+}
+
+body ,html{
+    height:100%;
+    font-family: 'Segoe UI' , sans-serif;
+    font-size: 1.2rem;
+    background-color: var(--bg-dark);
+    color:var(--text-main);
+}
+button,input{
+    font-family: 'Segoe UI' , 'sans-serif';
+    font-size: 0.8rem;
+
+}
+
+.slider{
+    height:100%;
+    width:20vw;
+    background-color: var(--bg-slider);
+    border-right: 1px solid #334155;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition:transform 0.3s ease;
+}
+
+.slider-header{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    padding: 5%;
+    
+
+}
+.serch-btn{
+    border:none;
+    padding:0;
+    width: 15%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+#serch-team{
+    height: 50%;
+
+}
+
+.app-header, main,.match-details{
+    margin-left: 20vw;
+    transition:margin-left 0.3s ease;
+}
+
+
+.slider.hidden ~ main,
+.slider.hidden ~ .app-header,
+.slider.hidden ~ .match-details {
+    margin-left: 0;
+}
+
+.slider.hidden{
+    transform: translateX(-100%);
+
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    text-align: left;   
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    list-style: none;
+    padding: 0% 5% 5%;
+}
+
+.nav-items{
+    background:none;
+    border:none;
+    color: #94a3b8;
+    cursor:pointer;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    width:100%;
+    gap:10px;
+    padding: 0;
+
+}
+
+.nav-items:hover{
+    background-color: rgba(225,225,225,0.1);
+}
+
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title{
+    text-decoration: none;
+    color:inherit;
+
+}
+
+.menu-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 3vh;
+    width: 3vw;
+    background:none;
+    border: none;
+    cursor:pointer;
+}
+
+.menu-span{
+    display: block;
+    width: 100%;
+    height: 10%;
+    background-color: var(--text-main);
+    border-radius: 2px;
+
+}
+
+.serch-icon{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20%;
+}
+
+
+
+
+.favorite-icon{
+    width: 10%;
+    height: 10%;
+}
+
+
+
+
