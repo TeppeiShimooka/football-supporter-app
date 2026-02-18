@@ -53,6 +53,8 @@ button,input{
 
 #serch-team{
     height: 50%;
+    display: flex;
+    align-items: center;
 
 }
 
@@ -151,6 +153,9 @@ li{
     height: 10%;
 }
 
+.league-icon{
+    width: ;
+}
 
 
 

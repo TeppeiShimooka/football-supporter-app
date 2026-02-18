@@ -1,27 +1,82 @@
 const slider = document.querySelector(".slider");
 const menuBtn = document.querySelector(".menu-btn");
+const leagueImg  = document.querySelector(".league-img");
+const leagueBtn = document.querySelectorAll(".nav-items");
+const leagueName = document.querySelector(".league-name");
 
 
 const sliderEvent = menuBtn.addEventListener('click' , ()=>{
     slider.classList.toggle("hidden");
 });
 
-const API_URL = 'http://localhost:3000/api/matches';
+const leagueNameJp = {
+    "PL":"プレミアリーグ",
+    "PD":"ラ・リーガ",
+    "BL1":"ブンデスリーガ",
+    "SA":"セリエA",
+    "FL1":"リーグ・アン",
+    "DED":"エールディビジ",
+    "CL":"UEFAチャンピオンズリーグ"
+}
 
-const fetchMatches = async ()=>{
+const fetchMatches = async (url)=>{
     try{
-        const response = await fetch(API_URL);
+        const response = await fetch(url);
         if(!response.ok) throw new Error('Network response was not ok');
 
-        const data = response.json();
+        const data = await response.json();
         console.log('取得したデータ:' , data);
+
+        leagueImg.src = data.competition.emblem;
+        leagueName.textContent = leagueNameJp[data.competition.code];
+
+        
+
+
+
+
+
+
+
+
+
+
 
     }catch (error){
         console.log('データの取得に失敗した:' , error)
     }
+
+
+   ;
 }
 
-fetchMatches();
+
+
+const leagueCode = {
+    "プレミアリーグ": "PL",
+    "ラ・リーガ":"PD",
+    "ブンデスリーガ":"BL1",
+    "セリエA":"SA",
+    "リーグ・アン":"FL1",
+    "エールディビジ":"DED",
+    "UEFAチャンピオンズリーグ":"CL"
+};
+
+leagueBtn.forEach(button => {
+    button.addEventListener('click' , async ()=>{
+        
+        const btnTextcontent = button.textContent.trim();
+        const code  = leagueCode[btnTextcontent];
+
+        if(code){
+            const leagueURL = `http://localhost:3000/api/matches/${code}`;
+            await fetchMatches(leagueURL);
+        }
+    })
+})
+
+
+
 
 
 

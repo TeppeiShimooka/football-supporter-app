@@ -8,14 +8,18 @@ const API_KEY = process.env.FOOTBALL_API_KEY;
 
 const app = express();
 app.use(cors());
+app.use(express.static('../frontend'));
 
-app.get('/api/matches' , async (req , res)=>{
+
+
+app.get('/api/matches/:leagueCode' , async (req , res)=>{
+
+    const code = req.params.leagueCode;
     try{
-        const response = await axios.get('https://api.football-data.org/v4/competitions/PL/matches' , {
+        const response = await axios.get(`https://api.football-data.org/v4/competitions/${code}/matches`, {
             headers:{'X-Auth-Token':API_KEY},
             params:{
-            //     status:'SCHEDULED' ,
-            //     // matchday:23
+                // status:'SCHEDULED'
             }
         });
         res.json(response.data);
@@ -27,5 +31,5 @@ app.get('/api/matches' , async (req , res)=>{
 
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`🚀 Server is running on http://localhost:${PORT}`);
+    console.log(`🚀 Server is running on http://localhost:${PORT}`);  
 });
