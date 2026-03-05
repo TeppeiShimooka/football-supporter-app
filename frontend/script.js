@@ -3,11 +3,16 @@ const menuBtn = document.querySelector(".menu-btn");
 const leagueImg  = document.querySelector(".league-img");
 const leagueBtn = document.querySelectorAll(".nav-items");
 const leagueName = document.querySelector(".league-name");
+const leagueIconBtn = document.querySelectorAll(".nav-league-icon-btn");
+const leagueIconSrc = document.querySelectorAll(".nav-league-icon");
+
 
 
 const sliderEvent = menuBtn.addEventListener('click' , ()=>{
     slider.classList.toggle("hidden");
 });
+
+
 
 const leagueNameJp = {
     "PL":"プレミアリーグ",
@@ -29,6 +34,7 @@ const fetchMatches = async (url)=>{
 
         leagueImg.src = data.competition.emblem;
         leagueName.textContent = leagueNameJp[data.competition.code];
+
 
         
 
@@ -62,6 +68,20 @@ const leagueCode = {
     "UEFAチャンピオンズリーグ":"CL"
 };
 
+leagueIconBtn.forEach(button=>{
+    button.addEventListener('click' , ()=>{
+        const code = button.dataset.code;
+        if(code){
+            const leagueURL = `http://localhost:3000/api/matches/${code}`;
+            fetchMatches(leagueURL);
+        }else{
+            console.error("ボタンにデータが設定されていないかデータが間違っている");
+        }
+    });
+});
+
+
+
 leagueBtn.forEach(button => {
     button.addEventListener('click' , async ()=>{
         
@@ -74,6 +94,9 @@ leagueBtn.forEach(button => {
         }
     })
 })
+
+
+
 
 
 

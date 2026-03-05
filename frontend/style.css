@@ -153,9 +153,33 @@ li{
     height: 10%;
 }
 
-.league-icon{
-    width: ;
+
+
+.league-icon-container{
+   display: grid;
+    /* 1列あたり最小200px、入る分だけ自動で並べる */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px; /* カード同士の間隔 */
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto; /* 中央寄せ */
 }
 
+
+
+
+.nav-league-icon-btn{
+    width: 80%;
+    height: 80%;
+    cursor: pointer;
+}
+
+.nav-league-icon{
+    width: 80%;
+    height: 80%;
+    object-fit:contain;
+    
+
+}
 
 
