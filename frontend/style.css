@@ -166,7 +166,11 @@ li{
 }
 
 
+.select-league{
+    grid-column: 1 / -1;
+    text-align: center;
 
+}
 
 .nav-league-icon-btn{
     width: 80%;

@@ -8,9 +8,79 @@ const leagueIconSrc = document.querySelectorAll(".nav-league-icon");
 
 
 
+
 const sliderEvent = menuBtn.addEventListener('click' , ()=>{
     slider.classList.toggle("hidden");
 });
+
+const rennderMacthSchedule = (data)=>{
+    const pastSection = document.querySelector(".past-section");
+    const nowMaker = document.querySelector(".now-maker");
+    const upcomingSection = document.querySelector(".upcoming-section");
+
+    pastSection.innerHTML = "";
+    upcomingSection.innerHTML = "";
+
+
+
+    const now = new Date();
+    const matches = data.matches;
+
+    const upcmoingMatches = matches.filter(m => new Date(m.utcDate) >= now);
+    upcmoingMatches.forEach(match => {
+        const macthCard = createMatchElement(match);
+        upcomingSection.appendChild(macthCard);
+    });
+
+    const pastMatches = matches.filter(m => new Date(m.utcDate) < now );
+    pastMatches.forEach(match => {
+        const matchCard = createMatchElement(match);
+        pastSection.appendChild(matchCard);
+
+    });
+
+    nowMaker.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+
+const createMatchElement = (match) => {
+
+    const matchDate = new Date(match.utcDate);
+    const year = matchDate.getFullYear();
+    const month = matchDate.getMonth() + 1;
+    const days = matchDate.getDate();
+    const hours = matchDate.getHours();
+    const minutes = matchDate.getMinutes();
+
+    const timeString = `${year} ${month}/${days} ${hours}:${minutes.toString().padStart(2, '0')}`;
+
+    const matchDiv = document.createElement("div");
+    matchDiv.className = "match-items";
+    const matchDivBtn = document.createElement("button");
+    matchDivBtn.className = "match-div-btn";
+    matchDiv.appendChild(matchDivBtn);
+    const matchDateDiv = document.createElement("div");
+    matchDateDiv.className = "match-date";
+    matchDivBtn.appendChild(matchDateDiv);
+    matchDateDiv.textContent = timeString;
+
+
+
+
+
+
+
+    return matchDiv;
+
+};
+
+    // console.log(pastMatches.length);
+    // console.log(upcmoingMatches.length);
+
+
+    
+
+
 
 
 
@@ -36,25 +106,13 @@ const fetchMatches = async (url)=>{
         leagueName.textContent = leagueNameJp[data.competition.code];
 
 
-        
-
-
-
-
-
-
-
-
-
-
-
+        rennderMacthSchedule(data);
     }catch (error){
         console.log('データの取得に失敗した:' , error)
     }
 
 
-   ;
-}
+};
 
 
 
