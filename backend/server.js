@@ -17,11 +17,14 @@ app.use(express.static('../frontend'));
 app.get('/api/matches/:leagueCode' , async (req , res)=>{
 
     const code = req.params.leagueCode;
+    const season = req.query.season;
+    const targetSeason = season || "2025";
+    
     try{
-        const response = await axios.get(`https://api.football-data.org/v4/competitions/${code}/matches`, {
+        const response = await axios.get(`https://api.football-data.org/v4/competitions/${code}/matches?season=${targetSeason}`, {
             headers:{'X-Auth-Token':API_KEY},
             params:{
-                // status:'SCHEDULED'
+                
             }
         });
         res.json(response.data);
